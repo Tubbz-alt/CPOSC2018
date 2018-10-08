@@ -1,0 +1,316 @@
+\documentclass[10pt,foldmark,notumble]{leaflet}
+\renewcommand*\foldmarkrule{.3mm}
+\renewcommand*\foldmarklength{5mm}
+
+%%% PAGE LAYOUT
+%% Portrait
+%% Short-Edge (Flip)
+
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{mathptmx}
+\usepackage{xcolor}
+\usepackage[scaled=0.9]{helvet}
+\makeatletter
+\def\ptmTeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.075emX\@}
+\DeclareRobustCommand{\ptmLaTeX}{L\kern-.3em
+        {\setbox0\hbox{T}%
+         %\vb@xt@ % :-)
+         \vbox to\ht0{\hbox{%
+                            \csname S@\f@size\endcsname
+                            \fontsize\sf@size\z@
+                            \math@fontsfalse\selectfont
+                            A}%
+                      \vss}%
+        }%
+        \kern-.12em
+        \ptmTeX}
+\makeatother
+\let\TeX=\ptmTeX
+\let\LaTeX=\ptmLaTeX
+\usepackage{shortvrb}
+\MakeShortVerb{\|}
+\usepackage{url}
+\usepackage{graphicx}
+%\usepackage{lipsum}
+%\usepackage{blindtext}
+
+%%%%\renewcommand{\descfont}{\normalfont}
+\newcommand\Lpack[1]{\textsf{#1}}
+\newcommand\Lclass[1]{\textsf{#1}}
+\newcommand\Lopt[1]{\texttt{#1}}
+\newcommand\Lprog[1]{\textit{#1}}
+\definecolor{LIGHTGRAY}{gray}{.8}
+
+\newcommand*\defaultmarker{\textsuperscript\textasteriskcentered}
+
+
+\title{RTL-SDR Getting Started Guide}
+
+\author{Central Pennsylvania Open Source Conference}
+\date{{\scriptsize \textbf{Presented by:} Tom Swartz \hfill \textbf{tom@tswartz.net}}}
+
+\CutLine*{1}% Dotted line without scissors
+\CutLine*{6}% Remove * for scissors
+
+%\AddToBackground{1}{%  Background of a small page
+%  \put(0,0){\textcolor{Cerulean}{\rule{\paperwidth}{\paperheight}}}}
+
+
+\AddToBackground{1}{%  Background of a small page
+  \put(115,530){\includegraphics[scale=0.15]{images/logo.png}}}
+
+
+%\AddToBackground{6}{%  Background of a small page
+%  \put(0,0){\textcolor{YellowOrange}{\rule{\paperwidth}{\paperheight}}}}
+
+
+\AddToBackground*{2}{% Background of a large page
+  \put(\LenToUnit{.5\paperwidth},\LenToUnit{.5\paperheight}){%
+    \makebox(0,0)[c]{%
+      \resizebox{.9\paperwidth}{!}{\rotatebox{35.26}{%
+        \textsf{\textbf{\textcolor{LIGHTGRAY}{CPOSC 2018 REFERENCE COPY}}}}}}}}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\section{Quick Start\color{red}\hrulefill\color{black}}
+\textbf{Items Included With This Kit}\\
+Included in this kit are several items to help get started right away with
+software defined radio.
+This pamphlet outlines what each of these items do, how to use them,
+and highlights some interesting things you can receive with the kit.
+The next page reviews some beginner questions about SDR\@.
+\begin{itemize}
+        \item Software Defined Radio
+        \item Dipole antenna base, with two pairs of antennas
+        \item SMA connector antenna extension cable
+        \item Flexible tripod mount
+        \item Suction cup window mount
+        \item Custom-made 140 MHz Band-Pass Filter
+\end{itemize}
+
+\textbf{Installing Software}\\
+The software you use will depend on your computer operating system. Later
+sections in this pamphlet outline specific programs for each Operating System.
+In general, you need to install a program to interpret the SDR device's
+output.
+
+By and large, most SDR applications run on Linux (and Raspberry
+Pi), so Linux is generally recommended.
+Microsoft Windows is also well supported, but typically requires driver
+installation prior to use.
+
+See \url{https://www.rtl-sdr.com/QSG} for more information specific to your
+computer platform.
+
+\textbf{Connecting the Hardware}\\
+Plug the software defined radio into a USB port.
+Connect the antenna to the SMA port on the software defined radio.
+Place the antenna outside, or as close to an outside window as possible.
+
+\section{Common Software Defined Radio Questions\color{red}\hrulefill\color{black}}
+\textbf{What is Software Defined Radio?}\\
+Radio components such as modulators, demodulators, and tuners are traditionally
+implemented in hardware components. The advent of modern computing and
+analog-to-digital converters allows most of these traditionally hardware based
+components to be implemented into software instead. Hence, the term software
+defined radio. This enables easy signal processing on inexpensive radio hardware
+to be used at a large scale.
+
+\textbf{What can I do with Software Defined Radio?}\\
+SDRs like the one included in this kit can receive signals from 24 MHz to 2 GHz.
+This typically means that it can be used to listen to a variety of transmissions,
+either from local police radios, to EMS/Ambulances, to regular FM Radio like you
+receive in your car.
+Other common signals can be air traffic control, weather balloons, satellites,
+and amateur radio transmissions.
+Digital signals can also be received, so long as they are within the frequency
+range of the software defined radio.
+
+\textbf{Can I sniff or receive WiFi with an SDR?}\\
+No. These devices can only receive signals from 24 MHz to 2 GHz, in 2 MHz
+`slices'.
+Typical WiFi signals are found at 2.4 GHz and higher, and operate
+in 22 MHz bandwidth `slices'; much too wide for this type of device.
+
+\section{About the Band Pass Filter\color{red}\hrulefill\color{black}}
+\textbf{The Purpose of a Filter}\\
+Because the SDR devices can receive such a wide range of signals, it's not
+uncommon for strong nearby transmissions to `overload' or `shout over' a faint,
+faraway signal.
+
+A filter will limit the range of frequencies that the SDR can hear through the
+antenna, and therefore improve the \emph{signal to noise ratio}.
+Any transmissions on frequencies not within that range are `dampened'; their
+strength is greatly reduced.
+This means a certain band of frequencies can pass through the filter easily,
+leading to the name \emph{Band Pass Filter}.
+
+It is entirely possible that very strong local transmissions outside of the band
+pass filter range can still be received by the SDR, but these transmissions will
+be significantly lower in strength (quieter) than if they were unfiltered.
+
+\textbf{Using the Band Pass Filter}\\
+The filter included in this kit only allows signals from 130 MHz to 150 MHz
+to be heard clearly by the software defined radio.
+The band pass filter was designed specifically to filter out any frequencies not
+used by common weather and radio satellites.
+It helps reduce outside noise and ensures that the clearest signal possible is recorded.
+
+To use the filter, simply connect it in-between the antenna and the SDR dongle,
+taking care to have the antenna on the ``in'' side, and the SDR on the ``out'' side.
+If you are using the extension cable provided in the kit, place the filter as
+close to the antenna as possible for best results.
+
+It is not recommended to use the filter in the SDR antenna system if you
+are interested in receiving signals outside of the specified filter range.
+
+\textbf{Open Source Hardware}\\
+The band-pass filter included in this is open-source hardware and was designed
+using KiCAD, an open-source circuit design program.
+
+Because of the design and part selection, five filters can be built for less
+than \$20.
+
+Schematics for this device, as well as instructions to build the filter
+can be found at:\\
+\url{https://github.com/tomswartz07/140bpf-kicad}.
+
+\section{Notable Linux SDR Applications\color{red}\hrulefill\color{black}}
+\textbf{GQRX}\\
+GQRX is the gold-standard for open-source SDR user interfaces. It supports a
+wide variety of reception modes, and has the ability to stream SDR data over
+the internet. Also works on OSX and Windows.
+
+\textbf{rtl\_fm}\\
+rtl\_fm is a command-line based receiver written by a Lancaster County native.
+It is extremely useful as it can be used to pipe decoded audio to various
+other decoder programs.
+
+\textbf{dump1090}\\
+dump1090 decodes aircraft location data, which is transmitted on
+1090 MHz. This data is shown on a map, with markers indicating which airline
+and flight number is being received.
+
+\textbf{WXtoIMG}\\
+WXtoIMG is a program written in the late 1990's to convert NOAA Weather satellite
+data into images. It supports a variety of decoding options, and can overlay
+maps and other useful data on top of the image.
+Unfortunately, it is very very particular about the way a signal was recorded.
+
+\textbf{Multimon-ng}\\
+Multimon-ng is an application to decode digital transmissions into text.
+The program can decode pager messages (more common than you would think!), as
+well as Emergency Alerts, Morse Code, and a variety of others.
+
+\textbf{GPredict}\\
+GPredict is an open source satellite prediction software, written by the same
+author of GQRX\@. It has very tight integration with GQRX software, and, most
+notably is used by the European Space Agency to track satellites.
+
+\textbf{GnuRadio Companion}\\
+GnuRadio Companion (GRC) is an incredibly powerful `LEGO Block' style interface
+for receiving and processing SDR signals. It allows for unlimited potential
+for decoding various signals or creating your own user interface.
+
+\textbf{rtl\_433}\\
+rtl\_433 is a command line program to receive and decode outdoor temperature
+sensors, garage door openers, wireless doorbells, and other common wireless
+consumer products.
+
+\section{Notable Windows SDR Applications\color{red}\hrulefill\color{black}}
+\textbf{SDR\#}\\
+`SDR Sharp' is an excellent, well supported SDR user interface that supports
+a large variety of plugins.
+
+\textbf{CubicSDR}\\
+CubicSDR is a cross-platform SDR application. It's most notable feature
+is a scanner-like feature, allowing the SDR to monitor multiple frequencies
+at the same time.
+
+\textbf{RDS Spy}\\
+RDS Spy is a Radio Data System (RDS) decoder.
+This application can decode song title and radio station information which
+is broadcast along with some local FM music transmissions.
+
+\section{Receiving Weather Satellite Data\color{red}\hrulefill\color{black}}
+\textbf{Select a good reception location}\\
+In order to get the best possible signal from a satellite,
+you need an unobstructed view of the sky overhead.
+
+It's important to find an outside location, such as a backyard, local park, or
+nearby field, so that you can have very few objects between your antenna and the
+satellite in orbit.
+
+\textbf{Determine when the satellite will fly overhead}\\
+Most weather satellites orbit around the Earth from the North Pole to the South
+Pole. This typically means that the satellite will pass overhead twice
+per day; once in the morning, once in the evening.
+
+Use satellite prediction software (such as GPredict) or an online
+resource (such as \url{https://www.n2yo.com}) to determine what times
+the satellite will fly over your location.
+
+\textbf{Receiving the Signal}\\
+At the appropriate time, set up your SDR software,
+using a \emph{Narrow FM} signal type with a very wide \emph{Filter Width}
+(NOAA satellites use 80 k).
+Verify that the \emph{Squelch} is set to the lowest possible value. You should
+hear static through the computer speakers. Ensure the antenna is unobstructed.
+
+Tune to the appropriate frequency for the satellite:
+\begin{description}
+\item[NOAA 15] \dotfill 137.620 MHz
+\item[NOAA 18] \dotfill 137.912 MHz
+\item[NOAA 19] \dotfill 137.100 MHz
+\end{description}
+
+Hit the \emph{Record} button to record a \emph{*.wav} file
+of the signal as it passes overhead.
+
+\textbf{Decoding the Image}\\
+Most common NOAA decoder software expects \emph{Mono 11025 Hz WAV} files, so you
+must use Audacity to process the audio file into the expected format prior to
+decoding an image.
+
+Typically, use \emph{Tracks} $\to$ \emph{Stereo Track to Mono}, then
+select \emph{Effects} $\to$ \emph{Normalize} to standardize the audio level.
+Ensure that the \emph{Project Rate} in Audacity is set to \emph{11025} and then
+export the audio as a \emph{16 Bit PCM Microsoft WAV} file.
+
+Finally, load the file into a decoder program, such as\\ WXtoIMG, to view the
+weather satellite image!
+
+\section{Interesting Lancaster-Area Frequencies\color{red}\hrulefill\color{black}}
+\begin{description}
+\item[033.440 MHz] \dotfill Lancaster County Emergency Services
+\item[072.220 MHz] \dotfill Lancaster General Hospital
+\item[125.675 MHz] \dotfill Lancaster Airport Weather
+\item[137.100 MHz] \dotfill NOAA 19 Weather Satellite
+\item[137.620 MHz] \dotfill NOAA 15 Weather Satellite
+\item[137.912 MHz] \dotfill NOAA 18 Weather Satellite
+\item[137.890 MHz] \dotfill Meteor M2 Weather Satellite
+\item[145.800 MHz] \dotfill International Space Station
+\item[162.550 MHz] \dotfill National Weather Service
+\item[452.325 MHz] \dotfill Park City Mall Security
+\end{description}
+
+\emph{Many other signals are being transmitted at all hours of the day. Use the
+SDR to scan around and see what you find!}
+
+\section{Useful SDR Resources\color{red}\hrulefill\color{black}}
+\begin{itemize}
+\item \url{https://www.rtl-sdr.com/QSG}\\{\scriptsize Quick Start Guide for RTL-SDR devices}
+\item \url{https://www.rtl-sdr.com/V3}\\{\scriptsize User guide for the SDR dongle included in this kit}
+\item \url{https://www.rtl-sdr.com/DIPOLE}\\{\scriptsize Instructions specifically for antennas in this SDR kit}
+\item \url{https://www.radioreference.com}\\{\scriptsize List frequencies for public works and business in your area}
+\item \url{https://www.repeaterbook.com}\\{\scriptsize List common amateur radio (ham radio) frequencies}
+\item \url{https://www.n2yo.com}\\{\scriptsize List satellite fly-overs in your area}
+\end{itemize}
+
+\section{Notes\color{red}\hrulefill\color{black}}
+
+\end{document}
