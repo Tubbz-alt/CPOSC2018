@@ -1,0 +1,228 @@
+\documentclass[]{beamer}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage[framemethod=tikz]{mdframed}
+\hypersetup{pdfstartview={Fit}} % Fit the presentation to the window when first displayed
+\usetheme{Frankfurt}
+
+% http://danielfalster.com/blog/2013/06/18/a-nice-title-page-for-beamer-presentations/
+\newmdenv[tikzsetting={draw=black,fill=white,fill opacity=0.7, line width=1pt},backgroundcolor=none,leftmargin=0,rightmargin=0,innertopmargin=5pt,skipbelow=\baselineskip,skipabove=\baselineskip]{TitleBox}
+
+
+\title{Decoding Weather Satellites}
+\author[Swartz]{Tom~Swartz}
+\institute{Central PA Open Source Conference 2018}
+\date{December 2018}
+\subject{Computer Science}
+\begin{document}
+
+% Title Page
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/goes.jpg}}
+\begin{frame}[plain]
+    \vspace{17em}
+    \begin{TitleBox}
+        \begin{center}
+            {\color{red}\huge\inserttitle\color{black}}\\
+        \end{center}
+        \insertauthor{}\hfill\insertinstitute{}\\
+        {\footnotesize
+        \href{http://twitter.com/tswartz07}{@tswartz07}
+        \hfill
+        \href{mailto: tom@tswartz.net}{tom@tswartz.net}
+        }
+    \end{TitleBox}
+\end{frame}}
+
+\begin{frame}
+    \frametitle{Who Are You?}
+    \framesubtitle{And what are you doing here?}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+           {\huge Tom Swartz}
+            \begin{itemize}%[<+->]
+                \item<1->{Using SDR since 2012}
+                \item<1->{Not affiliated with NOAA}
+                \item<1->{Not my day job, just a hobby}
+                \item<1->{Captured 120 satellite passes over 6 years}
+                \item<1->{Involved in ham radio}
+                \item<1->{Listened to lots of amateur radio}
+                \item<2->{My dog's name is Wilbur}
+            \end{itemize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=6cm]{images/me.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% What's ahead?
+\begin{frame}
+    \frametitle{Agenda}
+    \tableofcontents
+\end{frame}
+
+
+% Lets get into it now...
+
+\section[Background]{Background of Weather Satellites}
+\begin{frame}
+    \includegraphics[]{images/dish.jpg}
+\end{frame}
+\subsection{NOAA Satellites}
+\subsubsection{NOAA POES}
+\begin{frame}{NOAA 19}
+    \framesubtitle{Launched: 6 Feb 2009}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \includegraphics[height=6cm,keepaspectratio]{images/noaa19-sat-illus.jpg}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=7cm]{images/noaa19-sat.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+\subsubsection{NOAA GOES}
+\begin{frame}
+    Image of GOES\\
+    All about geostationary
+\end{frame}
+\subsection{Meteor M2}
+\begin{frame}
+    About Russia's Meteor M2
+\end{frame}
+\section{Introduction to SDR}
+\subsection{Crash Course in SDR}
+\begin{frame}
+    \frametitle{Software Defined Radio}
+    \framesubtitle{Crash Course in SDR}
+    \begin{center}
+        \includegraphics[width=0.75\paperwidth,height=1.0\paperheight,keepaspectratio]{images/rtlsdr.jpg}
+    \end{center}
+\end{frame}
+\begin{frame}
+    \frametitle{Software Defined Radio}
+    \framesubtitle{SDR Hardware}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \begin{itemize}
+                \item{Very inexpensive radio}
+                \item{Can receive 24~MHz to 2~GHz}
+                \item{Uses computer software to interpret signals, rather than discrete transistors and expensive radio hardware}
+            \end{itemize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=4cm]{images/rtlsdr.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}
+    \frametitle{Software Defined Radio}
+    \framesubtitle{What types of things can SDR's receive?}
+    \begin{itemize}
+        \item Morse Code
+        \item AM Radio
+        \item Broadcast FM Radio
+        \item IoT Devices
+        \item Tire Pressure Monitoring Sensors
+        \item Amateur Radio
+        \item Ship Tracking
+        \item Aircraft Tracking
+        \item Baby Monitors
+        \item Weather Balloons
+        \item GPS Signals
+        \item GSM Cell Phone Signals
+        \item Taxi Dispatch
+        \item Mall Security
+        \item Remote Temperature Sensors
+        \item \dots lots more
+    \end{itemize}
+\end{frame}
+\subsection{Using SDR for Satellites}
+\begin{frame}
+    \frametitle{Software Defined Radio}
+    \framesubtitle{Using SDR for Satellites}
+    You need a few things:
+    \begin{enumerate}
+        \item A way to track the satellite
+        \item An antenna to receive the satellite
+            \begin{itemize}
+                \item Omnidirectional antenna
+                \item Dish antenna with motor mounts
+                \item Plain dipole of appropriate size
+            \end{itemize}
+        \item A program to receive/record the signal
+        \item A program to post-process and decode the signal
+    \end{enumerate}
+\end{frame}
+\section[Reception]{Receiving Satellite Signals}
+\begin{frame}
+    Here's how you pick up satellites
+\end{frame}
+\subsection{Receiving NOAA APT}
+\begin{frame}
+    talking about NOAA APT satellites
+\end{frame}
+\begin{frame}
+    Differences between satellites and transmitters on satellites
+\end{frame}
+\begin{frame}
+    Image of the POES status page, with transmitter/instrument status
+\end{frame}
+\subsection{Receiving NOAA HRPT}
+\begin{frame}
+    HRPT on POES, difficult to receive because of tracking
+    HRPT on GOES, difficult because it's far away
+\end{frame}
+\section[Decoding]{Decoding Satellite Signals}
+\subsection{Decoding APT}
+\begin{frame}
+    APT is analog\\
+    image of the APT signal from Google Slides
+\end{frame}
+\subsection{Decoding NOAA HRPT}
+\begin{frame}
+    Image from Full Disk\\
+    Mesoscale\\
+    ground antenna system
+\end{frame}
+\subsection{Decoding LRPT}
+\begin{frame}
+    Meteor is digital (compared to NOAA analog)
+\end{frame}
+\begin{frame}
+    Show QAM signal
+\end{frame}
+\begin{frame}
+    Image of waterfall comparison
+\end{frame}
+\begin{frame}
+    Decode digital signal, then process to image
+\end{frame}
+\section[Images]{Previously Captured Images}
+\frame{\sectionpage}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,width=1.0\paperwidth,keepaspectratio]{images/apt-nomap.png}}
+\begin{frame}[plain]
+\end{frame}}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/noaa19-jan17.png}}
+\begin{frame}[plain]
+\end{frame}}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/noaa-19-03-10-2017-1941-hvct.jpg}}
+\begin{frame}[plain]
+\end{frame}}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/noaa-19-03-10-2017-1941-msa-precip.jpg}}
+\begin{frame}[plain]
+\end{frame}}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/noaa-19-10-08-2018-2007-hvc.jpg}}
+\begin{frame}[plain]
+\end{frame}}
+\begin{frame}
+    Insert METEOR M2 Picture here
+\end{frame}
+\begin{frame}
+    Insert METEOR M2 closeup crop Picture here
+\end{frame}
+\section{Questions}
+\frame{\sectionpage}
+\end{document}
+
+% vim: set ts=4 sw=4:
