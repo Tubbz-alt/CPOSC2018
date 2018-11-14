@@ -1,13 +1,13 @@
 \documentclass[]{beamer}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage[framemethod=tikz]{mdframed}
 \hypersetup{pdfstartview={Fit}} % Fit the presentation to the window when first displayed
 \usetheme{Frankfurt}
 
 % http://danielfalster.com/blog/2013/06/18/a-nice-title-page-for-beamer-presentations/
 \newmdenv[tikzsetting={draw=black,fill=white,fill opacity=0.7, line width=1pt},backgroundcolor=none,leftmargin=0,rightmargin=0,innertopmargin=5pt,skipbelow=\baselineskip,skipabove=\baselineskip]{TitleBox}
-
 
 \title{Decoding Weather Satellites}
 \author[Swartz]{Tom~Swartz}
@@ -114,6 +114,57 @@
             \includegraphics[height=4cm]{images/rtlsdr.jpg}
         \end{column}
     \end{columns}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Frequencies}
+    % https://tex.stackexchange.com/questions/98695/how-do-i-generate-a-logarithmic-x-axis-without-a-y-axis
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    y=1.5cm,            % y unit vector
+                    hide y axis,        % hide the y axis
+                    legend style={draw=none},
+                    legend pos=outer north east,
+                    xmode = log,        % logarithmic x axis
+                    axis x line*=bottom,% only show the bottom x axis line, without an arrow tip
+                    log ticks with fixed point, % show layman numbers, not exponential format
+                    xmin=10, xmax=4000,% range for the x axis
+                    xlabel = Frequency in MHz
+                ]
+                \addplot [blue, no markers, line width=6pt] table {
+                    24   1
+                    2100 1
+
+                };
+                \addplot [red, line width=6pt] table {
+                    80 1
+                    108 1
+                };
+                \addplot [green, line width=6pt] table {
+                    125 1
+                    140 1
+                };
+                \addplot [green, line width=6pt] table {
+                    144 1
+                    146 1
+                };
+                \addplot [green, line width=6pt] table {
+                    430 1
+                    450 1
+                };
+                \addplot [green, line width=6pt] table {
+                    1500 1
+                    1700 1
+                };
+                \legend{SDR Range, Broadcast FM, Satellites}
+            \end{axis}
+        \end{tikzpicture}
+        \begin{description}
+            \item[RTL-SDR Range] 24~MHz $\to$ 2.1~GHz
+            \item[Broadcast FM] 88~MHz $\to$ 108~MHz
+            \item[Satellites] 130~MHz, 440~MHz, 1.9~GHz
+        \end{description}
+    \end{center}
 \end{frame}
 \begin{frame}
     \frametitle{Software Defined Radio}
