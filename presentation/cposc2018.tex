@@ -241,38 +241,91 @@
         \item A program to post-process and decode the signal
     \end{enumerate}
 \end{frame}
-\section[Reception]{Receiving Satellite Signals}
 \begin{frame}
-    Here's how you pick up satellites
+    \frametitle{Software Defined Radio}
+    \framesubtitle{Open Source Software for Satellites}
+    \begin{enumerate}
+        \item A way to track the satellite
+            \begin{itemize}
+                \item GPredict
+                \item Predict
+            \end{itemize}
+        \item A program to receive/record the signal
+            \begin{itemize}
+                \item GQRX
+                \item rtl\_fm
+                \item rtl\_tcp
+            \end{itemize}
+        \item A program to post-process and decode the signal
+            \begin{itemize}
+                \item WXtoIMG
+                \item MeDet
+                \item MeteorDemod
+                \item goestools
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+
+
+\section[Reception]{Receiving Satellite Signals}
+\frame{\sectionpage}
+\begin{frame}
+    \frametitle{Tracking the Satellite}
+    \begin{center}
+        \includegraphics[width=0.75\paperwidth,height=1.0\paperheight,keepaspectratio]{images/az-el-vis.png}
+    \end{center}
 \end{frame}
 \subsection{Receiving NOAA APT}
 \begin{frame}
-    talking about NOAA APT satellites
+    There are currently three NOAA POES satellites working:
+    \begin{description}
+        \item[NOAA 15] \dotfill 137.620 MHz
+        \item[NOAA 18] \dotfill 137.912 MHz
+        \item[NOAA 19] \dotfill 137.100 MHz
+    \end{description}
 \end{frame}
 \begin{frame}
-    Differences between satellites and transmitters on satellites
+    \frametitle{APT Signal}
+    \begin{center}
+        \includegraphics[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{images/apt-gqrx.png}
+    \end{center}
 \end{frame}
-\begin{frame}
-    Image of the POES status page, with transmitter/instrument status
-\end{frame}
-\subsection{Receiving NOAA HRPT}
+\subsection{Receiving METEOR LRPT}
 \begin{frame}
     HRPT on POES, difficult to receive because of tracking
     HRPT on GOES, difficult because it's far away
 \end{frame}
+\subsection{Reception Problems?}
+\begin{frame}
+    \frametitle{Sometimes they break\dots}
+    \framesubtitle{NOAA 15 System Status}
+    \begin{center}
+        \includegraphics[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{images/noaa-15-status.png}
+    \end{center}
+\end{frame}
+\begin{frame}
+    \frametitle{Sometimes they break\dots}
+    \framesubtitle{Meteor M2 Spinning}
+    \begin{center}
+        \includegraphics[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{images/meteor-spin.jpg}
+    \end{center}
+\end{frame}
+
+
+
 \section[Decoding]{Decoding Satellite Signals}
-\subsection{Decoding APT}
+\frame{\sectionpage}
 \begin{frame}
     APT is analog\\
     image of the APT signal from Google Slides
 \end{frame}
-\subsection{Decoding NOAA HRPT}
 \begin{frame}
     Image from Full Disk\\
     Mesoscale\\
     ground antenna system
 \end{frame}
-\subsection{Decoding LRPT}
+\subsection{Decoding Meteor LRPT}
 \begin{frame}
     Meteor is digital (compared to NOAA analog)
 \end{frame}
