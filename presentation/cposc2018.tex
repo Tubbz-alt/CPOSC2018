@@ -317,13 +317,45 @@
 \section[Decoding]{Decoding Satellite Signals}
 \frame{\sectionpage}
 \begin{frame}
-    APT is analog\\
-    image of the APT signal from Google Slides
+    \frametitle{How do you get colors?}
+    \framesubtitle{It's more complicated than you think!}
+    \begin{center}
+        \includegraphics[width=0.80\paperwidth]{images/rgb-compose.jpg}
+    \end{center}
+\end{frame}
+\subsection{Decoding NOAA POES APT}
+\begin{frame}
+    \frametitle{NOAA APT}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \begin{itemize}
+                \item First used in 1963
+                \item Analog signal
+                \item 2 Lines per Second (4160 Baud)
+                \item 2080 Pixels wide, variable height
+                \item Telemetry and picture data all in same line
+            \end{itemize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=0.5\paperwidth]{images/NOAA_APT_Frame_Format.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 \begin{frame}
-    Image from Full Disk\\
-    Mesoscale\\
-    ground antenna system
+    \frametitle{NOAA APT}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \includegraphics[height=0.5\paperwidth]{images/noaa-19-03-10-2017-1941-hvct.jpg}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=0.5\paperwidth]{images/NOAA_APT_Frame_Format.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}
+    \begin{center}
+    \includegraphics[width=0.75\paperwidth,height=1.0\paperheight,keepaspectratio]{images/apt-freq.jpg}
+    \end{center}
 \end{frame}
 \subsection{Decoding Meteor LRPT}
 \begin{frame}
@@ -355,12 +387,17 @@
 {\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/noaa-19-10-08-2018-2007-hvc.jpg}}
 \begin{frame}[plain]
 \end{frame}}
-\begin{frame}
-    Insert METEOR M2 Picture here
-\end{frame}
-\begin{frame}
-    Insert METEOR M2 closeup crop Picture here
-\end{frame}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/meteorm2-full.png}}
+\begin{frame}[plain]
+\end{frame}}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/meteorm2-crop.png}}
+\begin{frame}[plain]
+\end{frame}}
+{\usebackgroundtemplate{\includegraphics[height=1.0\paperheight,keepaspectratio]{images/meteorm2-ca-clouds.png}}
+\begin{frame}[plain]
+\end{frame}}
+
+
 \section{Questions}
 \frame{\sectionpage}
 \end{document}
