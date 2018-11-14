@@ -61,35 +61,71 @@
     \tableofcontents
 \end{frame}
 
-
 % Lets get into it now...
 
 \section[Background]{Background of Weather Satellites}
 \begin{frame}
     \includegraphics[]{images/dish.jpg}
 \end{frame}
-\subsection{NOAA Satellites}
-\subsubsection{NOAA POES}
-\begin{frame}{NOAA 19}
+
+\subsection{NOAA POES}
+\begin{frame}
+    \frametitle{Polar-orbiting Operational Environmental Satellite 19}
     \framesubtitle{Launched: 6 Feb 2009}
     \begin{columns}[T]
-        \begin{column}[T]{5cm}
-            \includegraphics[height=6cm,keepaspectratio]{images/noaa19-sat-illus.jpg}
+        \begin{column}[T]{5.5cm}
+            \begin{itemize}
+                \item 535 Miles
+                \item Lancaster $\to$ Charleston,~SC
+                \item 2.9 ms for light to travel
+                \item Camera resolution: 2.5~Miles/Pixel
+            \end{itemize}
+            \includegraphics[height=4cm,keepaspectratio]{images/noaa-19-sat-illus.png}
         \end{column}
         \begin{column}[T]{5cm}
             \includegraphics[height=7cm]{images/noaa19-sat.jpg}
         \end{column}
     \end{columns}
 \end{frame}
-\subsubsection{NOAA GOES}
-\begin{frame}
-    Image of GOES\\
-    All about geostationary
-\end{frame}
 \subsection{Meteor M2}
 \begin{frame}
-    About Russia's Meteor M2
+    \frametitle{Roscosmos Meteor 3M-2}
+    \framesubtitle{Launched: 8 July 2014}
+    \begin{columns}[T]
+        \begin{column}[T]{5.5cm}
+            \begin{itemize}
+                \item 515 Miles
+                \item Lancaster $\to$ Louisville,~KY
+                \item 2.8 ms for light to travel
+                \item Camera resolution: 1.8~Miles/Pixel
+            \end{itemize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=4cm,keepaspectratio]{images/meteor-m2.jpg}
+        \end{column}
+    \end{columns}
 \end{frame}
+\subsection{NOAA GOES}
+\begin{frame}
+    \frametitle{Geostationary Operational Environmental Satellite-16}
+    \framesubtitle{Launched: 19 Nov 2016}
+    \begin{columns}[T]
+        \begin{column}[T]{6.1cm}
+            \begin{itemize}
+                \item 22,236 Miles
+                \item Lancaster $\to$ Venezuela (the long way)
+                \item 119 ms for light to travel
+                \item Camera resolution: 0.35~Miles/pixel~(1900~feet/pixel)
+            \end{itemize}
+            \includegraphics[height=4cm,keepaspectratio]{images/polar-vs-geo-satellites.jpg}
+        \end{column}
+        \begin{column}[T]{4cm}
+            \includegraphics[height=6cm,keepaspectratio]{images/goes-r-illus.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
 \section{Introduction to SDR}
 \subsection{Crash Course in SDR}
 \begin{frame}
