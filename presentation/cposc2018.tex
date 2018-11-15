@@ -71,7 +71,12 @@
 \begin{frame}
     \includegraphics[]{images/dish.jpg}
 \end{frame}
-
+\begin{frame}
+    \frametitle{A tale of three satellites\dots}
+    \begin{center}
+        \includegraphics[height=7cm,keepaspectratio]{images/polar-vs-geo-satellites.jpg}
+    \end{center}
+\end{frame}
 \subsection{NOAA POES}
 \begin{frame}
     \frametitle{Polar-orbiting Operational Environmental Satellite 19}
@@ -79,9 +84,10 @@
     \begin{columns}[T]
         \begin{column}[T]{5.5cm}
             \begin{itemize}
-                \item 535 Miles
+                \item Orbit: 535 Miles
                 \item Lancaster $\to$ Charleston,~SC
                 \item 2.9 ms for light to travel
+                \item Data rate: 8.32 kbps
                 \item Camera resolution: 2.5~Miles/Pixel
             \end{itemize}
             \includegraphics[height=4cm,keepaspectratio]{images/noaa-19-sat-illus.png}
@@ -93,14 +99,15 @@
 \end{frame}
 \subsection{Meteor M2}
 \begin{frame}
-    \frametitle{Roscosmos Meteor 3M-2}
+    \frametitle{Roscosmos Meteor M-N2}
     \framesubtitle{Launched: 8 July 2014}
     \begin{columns}[T]
         \begin{column}[T]{5.5cm}
             \begin{itemize}
-                \item 515 Miles
+                \item Orbit: 515 Miles
                 \item Lancaster $\to$ Louisville,~KY
                 \item 2.8 ms for light to travel
+                \item Data rate: 80 kbps
                 \item Camera resolution: 1.8~Miles/Pixel
             \end{itemize}
         \end{column}
@@ -116,12 +123,12 @@
     \begin{columns}[T]
         \begin{column}[T]{6.1cm}
             \begin{itemize}
-                \item 22,236 Miles
+                \item Orbit: 22,236 Miles
                 \item Lancaster $\to$ Venezuela (the long way)
                 \item 119 ms for light to travel
+                \item Data rate: 400 kbps
                 \item Camera resolution: 0.35~Miles/pixel~(1900~feet/pixel)
             \end{itemize}
-            \includegraphics[height=4cm,keepaspectratio]{images/polar-vs-geo-satellites.jpg}
         \end{column}
         \begin{column}[T]{4cm}
             \includegraphics[height=6cm,keepaspectratio]{images/goes-r-illus.png}
@@ -282,12 +289,14 @@
 \end{frame}
 \subsection{Receiving NOAA APT}
 \begin{frame}
-    There are currently three NOAA POES satellites working:
+    \frametitle{Receiving NOAA APT}
+    There are currently three working NOAA POES satellites:
     \begin{description}
         \item[NOAA 15] \dotfill 137.620 MHz
         \item[NOAA 18] \dotfill 137.912 MHz
         \item[NOAA 19] \dotfill 137.100 MHz
     \end{description}
+    {\scriptsize JPSS is technically also POES, but transmits on K-Band (26 GHz)}
 \end{frame}
 \begin{frame}
     \frametitle{APT Signal}
@@ -297,19 +306,32 @@
 \end{frame}
 \subsection{Receiving METEOR LRPT}
 \begin{frame}
-    HRPT on POES, difficult to receive because of tracking
-    HRPT on GOES, difficult because it's far away
+    \frametitle{Receiving Meteor LRPT}
+    %HRPT on POES, difficult to receive because of tracking
+    %HRPT on GOES, difficult because it's far away
+    Meteor M1 failed in 2014, but sometimes can be received.\\
+    Meteor M2 is the only currently functioning satellite.
+    \begin{description}
+        \item[Meteor M1] \dotfill 137.100 MHz
+        \item[Meteor M2] \dotfill 137.925 MHz
+    \end{description}
+\end{frame}
+\begin{frame}
+    \frametitle{LRPT Signal}
+    \begin{center}
+        \includegraphics[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{images/lrpt-gqrx.png}
+    \end{center}
 \end{frame}
 \subsection{Reception Problems?}
 \begin{frame}
-    \frametitle{Sometimes they break\dots}
+    \frametitle{Reception Problems? Sometimes they break\dots}
     \framesubtitle{NOAA 15 System Status}
     \begin{center}
         \includegraphics[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{images/noaa-15-status.png}
     \end{center}
 \end{frame}
 \begin{frame}
-    \frametitle{Sometimes they break\dots}
+    \frametitle{Reception Problems? Sometimes they break\dots}
     \framesubtitle{Meteor M2 Spinning}
     \begin{center}
         \includegraphics[width=0.75\paperwidth,height=0.75\paperheight,keepaspectratio]{images/meteor-spin.jpg}
