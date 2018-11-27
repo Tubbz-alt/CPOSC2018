@@ -242,14 +242,15 @@
     You need a few things:
     \begin{enumerate}
         \item A way to track the satellite
+        \item A program to receive/record the signal
+        \item A program to post-process and decode the signal
         \item An antenna to receive the satellite
             \begin{itemize}
                 \item Omnidirectional antenna
                 \item Dish antenna with motor mounts
                 \item Plain dipole of appropriate size
+                \item \emph{(OPTIONAL)} A signal filter to reduce interference
             \end{itemize}
-        \item A program to receive/record the signal
-        \item A program to post-process and decode the signal
     \end{enumerate}
 \end{frame}
 \begin{frame}
@@ -276,7 +277,26 @@
             \end{itemize}
     \end{enumerate}
 \end{frame}
-
+\begin{frame}
+    \frametitle{Software Defined Radio}
+    \framesubtitle{Open Source Hardware for Satellites}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/140-bpf-cad.jpg}
+            \begin{footnotesize}
+                \begin{itemize}
+                    \item Custom filter for 140~MHz
+                    \item Lessens all signals except for the ones we're interested in receiving
+                    \item \$20 for 10 filters
+                    \item Files, plans, parts list on GitHub
+                \end{itemize}
+            \end{footnotesize}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \includegraphics[height=0.70\paperheight]{images/140-bpf-irl.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
 
 
 \section[Reception]{Receiving Satellite Signals}
