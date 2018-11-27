@@ -491,6 +491,66 @@
         \end{axis}
     \end{tikzpicture}
 \end{frame}
+\begin{frame}
+    \frametitle{Meteor M2}
+    \framesubtitle{\dots and the Amplitude}
+    \begin{tikzpicture}
+        \begin{axis}[
+                trig format plots=rad,
+                axis lines = middle,
+                legend pos=outer north east,
+                enlargelimits,
+                clip=false
+            ]
+            \addplot[domain=-2*pi:2*pi,samples=200,blue] {sin(x)};
+            \addplot[domain=-2*pi:2*pi,samples=200,red] {0.75*sin(x)};
+            \draw[dotted,blue!40] (axis cs: 0,1) -- (axis cs: 0.5*pi,1);
+            \draw[dotted,red!40] (axis cs: 0,0.75) -- (axis cs: 0.5*pi,0.75);
+            \draw[dotted,olive,<->] (axis cs: 0.5*pi,1) -- node[right,text=black,font=\footnotesize]{~$\Delta$Amplitude}(axis cs: 0.5*pi,0.75);
+            \legend{Reference Phase, Encoded Signal}
+        \end{axis}
+    \end{tikzpicture}
+\end{frame}
+\begin{frame}
+    \frametitle{Meteor M2}
+    \framesubtitle{\dots and the Amplitude}
+    \begin{tikzpicture}
+        \begin{axis}[
+                trig format plots=rad,
+                axis lines = middle,
+                legend pos=outer north east,
+                enlargelimits,
+                clip=false
+            ]
+            \addplot[domain=-2*pi:2*pi,samples=200,blue] {sin(x)};
+            \addplot[domain=-2*pi:2*pi,samples=200,red] {0.5*sin(x)};
+            \draw[dotted,blue!40] (axis cs: 0,1) -- (axis cs: 0.5*pi,1);
+            \draw[dotted,red!40] (axis cs: 0,0.5) -- (axis cs: 0.5*pi,0.5);
+            \draw[dotted,olive,<->] (axis cs: 0.5*pi,1) -- node[right,text=black,font=\footnotesize]{~$\Delta$Amplitude}(axis cs: 0.5*pi,0.5);
+            \legend{Reference Phase, Encoded Signal}
+        \end{axis}
+    \end{tikzpicture}
+\end{frame}
+\begin{frame}
+    \frametitle{Meteor M2}
+    \framesubtitle{\dots and the Amplitude}
+    \begin{tikzpicture}
+        \begin{axis}[
+                trig format plots=rad,
+                axis lines = middle,
+                legend pos=outer north east,
+                enlargelimits,
+                clip=false
+            ]
+            \addplot[domain=-2*pi:2*pi,samples=200,blue] {sin(x)};
+            \addplot[domain=-2*pi:2*pi,samples=200,red] {0.25*sin(x)};
+            \draw[dotted,blue!40] (axis cs: 0,1) -- (axis cs: 0.5*pi,1);
+            \draw[dotted,red!40] (axis cs: 0,0.25) -- (axis cs: 0.5*pi,0.25);
+            \draw[dotted,olive,<->] (axis cs: 0.5*pi,1) -- node[right,text=black,font=\footnotesize]{~$\Delta$Amplitude}(axis cs: 0.5*pi,0.25);
+            \legend{Reference Phase, Encoded Signal}
+        \end{axis}
+    \end{tikzpicture}
+\end{frame}
 %\begin{frame}
 %    \frametitle{QAM Signals}
 %    \multiinclude[<+->][format=png,graphics={width=\textwidth}]{images/QAM16_Demonstration}
