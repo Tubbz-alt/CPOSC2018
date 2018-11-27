@@ -891,24 +891,74 @@
     \end{columns}
 \end{frame}
 \begin{frame}
-    Decode digital signal, then process to image
-\end{frame}
-\subsection{A Note about False Color}
-\frame{\subsectionpage}
-\begin{frame}
-    \frametitle{How do you get colors?}
-    \framesubtitle{It's (slightly) more complicated than you think!}
-    \begin{center}
-        \includegraphics[width=0.80\paperwidth]{images/rgb-compose.jpg}
-    \end{center}
-\end{frame}
+    \frametitle{QAM Decoding}
+    \framesubtitle{Meteor LRPT}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \begin{tikzpicture}[scale=0.75]
+                % Draw axis
+                \draw[->] (-4,0) -- (4,0) node[right,fill=white] {$I$};
+                \draw[->] (0,-4) -- (0,4) node[above,fill=white] {$Q$};
+                % x axis ticks
+                \draw[-] (-0.1,1) -- (0.1,1);
+                \draw[-] (-0.1,2) -- (0.1,2);
+                \draw[-] (-0.1,3) -- (0.1,3);
+                \draw[-] (-0.1,-1) -- (0.1,-1);
+                \draw[-] (-0.1,-2) -- (0.1,-2);
+                \draw[-] (-0.1,-3) -- (0.1,-3);
+                % y axis ticks
+                \draw[-] (1,-0.1) -- (1,0.1);
+                \draw[-] (2,-0.1) -- (2,0.1);
+                \draw[-] (3,-0.1) -- (3,0.1);
+                \draw[-] (-1,-0.1) -- (-1,0.1);
+                \draw[-] (-2,-0.1) -- (-2,0.1);
+                \draw[-] (-3,-0.1) -- (-3,0.1);
 
-%\subsection{Decoding NOAA GOES HRPT}
-%\begin{frame}
-%    Image from Full Disk\\
-%    Mesoscale\\
-%    ground antenna system
-%\end{frame}
+                % Position markers
+                % x,y
+                \filldraw[fill=cyan!50] (1,1) circle (0.2) node[label=below:$0000$] {};
+                \filldraw[fill=cyan!50] (3,1) circle (0.2) node[label=below:$0001$] {};
+                \filldraw[fill=cyan!50] (1,3) circle (0.2) node[label=below:$0010$] {};
+                \filldraw[fill=cyan!50] (3,3) circle (0.2) node[label=below:$0011$] {};
+                % x,-y
+                \filldraw[fill=cyan!50] (1,-1) circle (0.2) node[label=below:$0100$] {};
+                \filldraw[fill=cyan!50] (1,-3) circle (0.2) node[label=below:$0101$] {};
+                \filldraw[fill=cyan!50] (3,-1) circle (0.2) node[label=below:$0110$] {};
+                \filldraw[fill=cyan!50] (3,-3) circle (0.2) node[label=below:$0111$] {};
+                % -x,y
+                \filldraw[fill=cyan!50] (-1,1) circle (0.2) node[label=below:$1000$] {};
+                \filldraw[fill=cyan!50] (-3,1) circle (0.2) node[label=below:$1001$] {};
+                \filldraw[fill=cyan!50] (-1,3) circle (0.2) node[label=below:$1010$] {};
+                \filldraw[fill=cyan!50] (-3,3) circle (0.2) node[label=below:$1011$] {};
+                % -x,-y
+                \filldraw[fill=cyan!50] (-1,-1) circle (0.2) node[label=below:$1100$] {};
+                \filldraw[fill=cyan!50] (-1,-3) circle (0.2) node[label=below:$1101$] {};
+                \filldraw[fill=cyan!50] (-3,-1) circle (0.2) node[label=below:$1110$] {};
+                \filldraw[fill=cyan!50] (-3,-3) circle (0.2) node[label=below:$1111$] {};
+
+                % angle tracer
+                \draw[ultra thick, red, ->] (0.5,0) arc (0:310:0.5);
+                % point line
+                \draw[ultra thick, green, -] (0,0) -- (3,-3);
+            \end{tikzpicture}
+        \end{column}
+        \begin{column}[T]{5cm}
+            \begin{table}[]
+                \begin{tabular}{lll}
+                    Amp  & Phase & Data \\
+                    \hline
+                    25\% & $45^{\circ}$  & \textcolor{red}{0000} \\
+                    75\% & $45^{\circ}$  & \textcolor{blue}{0011} \\
+                    25\% & $225^{\circ}$ & \textcolor{green}{1100} \\
+                    75\% & $135^{\circ}$ & \textcolor{cyan!50}{1001} \\
+                    75\% & $315^{\circ}$ & \textcolor{cyan}{0111} \\
+                    %25\% & $315^{\circ}$ & 0100
+                \end{tabular}
+            \end{table}
+            \textbf{Data~Stream:}\\\textcolor{red}{0000}\textcolor{blue}{0011}\textcolor{green}{1100}\textcolor{cyan!50}{1001}\textcolor{cyan}{0111}\dots
+        \end{column}
+    \end{columns}
+\end{frame}
 
 
 \section[Images]{Previously Captured Images}
